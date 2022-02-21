@@ -72,7 +72,7 @@ const loadStuff = () => {
     getInfos().
         then((r) => {
             createElements(r);
-            // getImages(r);
+            getImages(r);
         })
         .catch(err => console.log(err));
 }
