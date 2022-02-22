@@ -230,7 +230,7 @@ body {
   display: none;
   opacity: .3;
   transition: all 300ms;
-  background: url('/client/images/download.png') no-repeat center center;
+  background: url('/images/download.png') no-repeat center center;
   background-size: 1.5rem 1.5rem;
   cursor: pointer;
   width: 2.5rem;
