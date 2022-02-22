@@ -23,7 +23,7 @@ const createElements = (arr) => {
         }
         //image element with placeholder image
         const img = document.createElement("img");
-        img.src = 'loading.gif';
+        img.src = './images/loading.gif';
         img.loading = 'lazy';
         //text elements
         const from = document.createElement("p");
@@ -112,6 +112,7 @@ setInterval(() => {
 //display them empty/loading with moving gradients
 //deletetion functionality
 //fetch each postcard individually and attach them to the elements created
+//hosting
 
 //upload different sizes and get only size for screensize
 //lazy loading images on scroll
@@ -119,4 +120,4 @@ setInterval(() => {
 //adding fields name if empty anonymous and timestamp
 //css for displaying those and bg style
 //delete sure? functionality
-//hosting
+

@@ -1,0 +1,35 @@
+:root {
+  --bg: rgb(0, 0, 0);
+  --sliderThumb: rgb(250, 235, 215);
+  font-size: 15px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: monospace;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+.btn {
+  font-family: monospace;
+  justify-self: center;
+  align-self: center;
+  cursor: pointer;
+  width: 80%;
+  height: 3rem;
+  border-radius: 0.4rem;
+  background-color: rgb(46, 45, 45);
+  color: antiquewhite;
+  border: 2px solid antiquewhite;
+}
+
+

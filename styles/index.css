@@ -1,0 +1,155 @@
+body {
+    background-color: rgba(250, 235, 215, 0.356);
+}
+
+header {
+    position: relative;
+    text-align: center;
+    width: clamp(350px, 70vw, 500px);
+    margin: 0 auto;
+    font-family: monospace;
+  }
+  
+  header h1 {
+    font-family: "Share Tech Mono", monospace;
+    padding: 4rem 0.3rem;
+    font-weight: 700;
+    font-size: clamp(4rem, 10vw, 6rem);
+  }
+  
+  header h2 {
+    opacity: 0.7;
+  }
+  
+  header a {
+    text-decoration: none;
+    padding: 2rem 1rem;
+    background-image: linear-gradient(
+      hsla(44, 28%, 73%, 0.582),
+      rgba(161, 160, 134, 0.26)
+    );
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: block;
+    position: relative;
+    width: 100%;
+    margin: 2rem auto;
+    border-radius: 1rem;
+    font-size: 5rem;
+  }
+  
+  header p {
+    position: relative;
+    text-align: center;
+    opacity: 0.7;
+    font-size: 0.8rem;
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  /* unvisited link */
+  header a:link {
+    color: green;
+  }
+  
+  /* visited link */
+  header a:visited {
+    color: green;
+  }
+  
+  /* mouse over link */
+  header a:hover {
+    color: rgb(36, 190, 36);
+    background-image: linear-gradient(
+      hsla(44, 28%, 73%, 0.582),
+      rgba(161, 160, 134, 0.404)
+    );
+  }
+  
+  /* selected link */
+  header a:active {
+    color: blue;
+  }
+
+  .save {
+    margin-bottom: 1rem;
+  }
+  .save,
+  .clear,
+  .reset {
+    background-color: rgb(27, 26, 26);
+  }
+
+  /* CARDS */
+ 
+.postcards {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .card {
+    position: relative;
+    overflow: hidden;
+    width: clamp(350px, 70vw, 500px);
+    background-image: linear-gradient(
+      hsla(44, 28%, 73%, 0.904),
+      rgba(161, 160, 134, 0.815)
+    );
+    /* background-image: url('cb2.jpg'); */
+    color: rgba(0, 0, 0, 0.788);
+    text-align: center;
+    margin: 5rem 0;
+    border-radius: 2rem;
+    padding: 3rem 2% 5rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  .card img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0.8rem;
+  }
+  
+  .card h1 {
+    padding: 1rem;
+  }
+  
+  .card h1,
+  .text {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  .from {
+    text-align: right;
+    opacity: 0.8;
+    font-size: 0.8rem;
+    margin: 0.5rem;
+  }
+  
+  .deleteCard {
+    position: absolute;
+    cursor: pointer;
+    width: 1rem;
+    height: 1rem;
+    top: -0.5rem;
+    right: 50%;
+    transform: translate(50%);
+    font-size: 3rem;
+    font-weight: lighter;
+    color: antiquewhite;
+    display: none;
+    transition: all 1s ease-in 200ms;
+  }
+  
+  .deleteCard:after {
+    display: inline-block;
+    content: "\00d7";
+  }
+  
+  .card:hover .deleteCard {
+    display: block;
+  }
+

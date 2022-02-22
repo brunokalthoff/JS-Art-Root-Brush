@@ -63,6 +63,7 @@ const postcard1 = document.querySelector('#postcard1');
 const menu = document.querySelector('.menu');
 const taTitle = document.querySelector('.taTitle');
 const taText = document.querySelector('.taText');
+const taName = document.querySelector('.taName');
 const bg = document.querySelector('.bg');
 
 
@@ -73,10 +74,11 @@ const rootSizeSlider = document.getElementById("rootSize");
 const rootAngleSlider = document.getElementById("rootAngle");
 
 
-const changePopupStyle = (ppp, cnv, mn, b) => {
+const changePopupStyle = (ppp, cnv, mn, ks, b) => {
     popup.style.display = ppp;
     canvas.style.filter = cnv;
     menu.style.display = mn;
+    ex.style.display = ks;
     bg.style.backgroundColor = b;
 }
 
@@ -121,7 +123,7 @@ window.addEventListener('mousedown', () => drawing = true)
 window.addEventListener('mouseup', () => drawing = false)
 
 save.addEventListener('click', () => {
-    changePopupStyle('inline-block', 'brightness(0)', 'none', 'black');
+    changePopupStyle('inline-block', 'brightness(0)', 'none', 'block', 'black');
     const dataURL = canvas.toDataURL();
     if (dataURL) image.setAttribute("src", dataURL);
 
@@ -136,7 +138,7 @@ clear.addEventListener('click', () => {
 })
 
 ex.addEventListener('click', () => {
-    changePopupStyle('none', 'opacity(1)', 'flex', 'var(--bg)')
+    changePopupStyle('none', 'opacity(1)', 'flex', 'none', 'var(--bg)')
 })
 
 // bg.addEventListener('click', () => {
@@ -148,13 +150,14 @@ ex.addEventListener('click', () => {
 // })
 
 
-const createData = async (img, title, text) => {
+const createData = async (img, title, text, name) => {
     try {
         const response = await axios.post(`https://postcardsapi.herokuapp.com/api/v1/postcards/crt`, null, {
             params: {
                 img: img,
                 title: title,
-                text: text
+                text: text,
+                name: name
             }
         });
         console.log('sheesh', response)
@@ -182,13 +185,15 @@ function dataURLtoBlob(dataURL) {
 
 const createForm = () => {
     const form = new FormData();
+    const name = taName.value;
     const title = taTitle.value;
     const text = taText.value;
     // base64 = canvas.toDataURL("image/png").split(';base64,')[1];
     const file = dataURLtoBlob(canvas.toDataURL("image/jpeg", 0.7));
+    form.append('image', file);
     form.append("title", title);
     form.append("text", text);
-    form.append('image', file);
+    form.append("name", name);
 return form;
 }
 
