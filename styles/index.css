@@ -1,20 +1,21 @@
 body {
-    background-color: rgba(250, 235, 215, 0.356);
+    background-color: hsl(34, 2%, 12%);
 }
 
 header {
     position: relative;
     text-align: center;
-    width: clamp(350px, 70vw, 500px);
+    width: clamp(400px, 40vw, 450px);
     margin: 0 auto;
     font-family: monospace;
+    color: antiquewhite;
   }
   
   header h1 {
     font-family: "Share Tech Mono", monospace;
     padding: 4rem 0.3rem;
     font-weight: 700;
-    font-size: clamp(4rem, 10vw, 6rem);
+    font-size: clamp(3rem, 5rem, 6rem);
   }
   
   header h2 {
@@ -25,10 +26,10 @@ header {
     text-decoration: none;
     padding: 2rem 1rem;
     background-image: linear-gradient(
-      hsla(44, 28%, 73%, 0.582),
-      rgba(161, 160, 134, 0.26)
+      hsla(44, 28%, 73%, 0.932),
+      rgba(185, 185, 162, 0.664)
     );
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgb(0, 0, 0), 0 6px 20px 0 rgb(0, 0, 0);
     display: block;
     position: relative;
     width: 100%;
@@ -60,14 +61,14 @@ header {
   header a:hover {
     color: rgb(36, 190, 36);
     background-image: linear-gradient(
-      hsla(44, 28%, 73%, 0.582),
-      rgba(161, 160, 134, 0.404)
+      hsla(44, 28%, 73%, 0.966),
+      rgba(161, 160, 134, 0.904)
     );
   }
   
   /* selected link */
   header a:active {
-    color: blue;
+    color: rgba(36, 190, 36, 0.61);
   }
 
   .save {
@@ -92,7 +93,7 @@ header {
   .card {
     position: relative;
     overflow: hidden;
-    width: clamp(350px, 70vw, 500px);
+    width: clamp(400px, 40vw, 450px);
     background-image: linear-gradient(
       hsla(44, 28%, 73%, 0.904),
       rgba(161, 160, 134, 0.815)
@@ -103,7 +104,7 @@ header {
     margin: 5rem 0;
     border-radius: 2rem;
     padding: 3rem 2% 5rem;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgb(0, 0, 0), 0 6px 20px 0 rgb(0, 0, 0);
   }
   
   .card img {

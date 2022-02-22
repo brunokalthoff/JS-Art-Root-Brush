@@ -57,6 +57,7 @@ const reset = document.querySelector('.reset');
 const continu = document.querySelector('.continue');
 const popup = document.querySelector('.popup');
 const ex = document.querySelector('.ex');
+const back = document.querySelector('.back');
 const image = document.querySelector('#img');
 const loadImageBtn = document.querySelector('#loadImageBtn');
 const postcard1 = document.querySelector('#postcard1');
@@ -65,6 +66,7 @@ const taTitle = document.querySelector('.taTitle');
 const taText = document.querySelector('.taText');
 const taName = document.querySelector('.taName');
 const bg = document.querySelector('.bg');
+const download = document.querySelector('.download');
 
 
 const bgColorSlider = document.getElementById("bgColor");
@@ -126,10 +128,9 @@ save.addEventListener('click', () => {
     changePopupStyle('inline-block', 'brightness(0)', 'none', 'block', 'black');
     const dataURL = canvas.toDataURL();
     if (dataURL) image.setAttribute("src", dataURL);
-
-    // canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+    //download     .replace("image/png", "image/octet-stream");
+    // canvas.toDataURL("image/png");
     // window.location.href = dataURL;
-
 })
 
 clear.addEventListener('click', () => {
@@ -148,6 +149,14 @@ ex.addEventListener('click', () => {
 // canvas.addEventListener('click', () => {
 //     changePopupStyle('none', 'opacity(1)', 'flex', 'var(--bg)')
 // })
+
+download.addEventListener('click', function(e) {
+    const link = document.createElement('a');
+    link.download = 'canvas.png';
+    link.href = canvas.toDataURL();
+    link.click();
+    link.delete;
+  });
 
 
 const createData = async (img, title, text, name) => {
