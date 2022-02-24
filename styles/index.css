@@ -10,17 +10,21 @@ header {
     font-family: monospace;
     color: antiquewhite;
   }
-  
-  header h1 {
+
+  .title h1 {
+    width: 100%;
+    color: antiquewhite;
+    text-align: center;
     font-family: "Share Tech Mono", monospace;
     padding: 4rem 0.3rem;
     font-weight: 700;
     font-size: clamp(3rem, 5rem, 6rem);
   }
-  
-  header h2 {
-    opacity: 0.7;
+
+  .title span {
+    color: rgb(18, 206, 18);
   }
+
   
   header a {
     text-decoration: none;
@@ -29,7 +33,7 @@ header {
       antiquewhite,
       rgba(207, 207, 201, 0.637)
     );
-    box-shadow: 0 10px 20px 20px rgb(0, 0, 0), 10px 0 20px 0 rgb(0, 0, 0);
+    box-shadow: 0 10px 20px 20px rgba(255, 255, 255, 0.089), 10px 0 20px 0 rgba(255, 255, 255, 0.041);
     display: block;
     position: relative;
     width: 100%;
@@ -108,7 +112,7 @@ header {
     margin: 5rem 0;
     border-radius: 2rem;
     padding: 3rem 2% 5rem;
-    box-shadow: 0 10px 20px 20px rgb(0, 0, 0), 10px 0 20px 0 rgb(0, 0, 0);
+    box-shadow: 0 10px 20px 20px rgba(255, 255, 255, 0.089), 10px 0 20px 0 rgba(255, 255, 255, 0.041);
   }
   
   .card img {
