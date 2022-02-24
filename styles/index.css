@@ -38,7 +38,7 @@ header {
       antiquewhite,
       rgba(207, 207, 201, 0.637)
     );
-    box-shadow: 0 5px 10px 10px rgba(255, 255, 255, 0.089), 5px 0 10px 0 rgba(255, 255, 255, 0.041);
+    box-shadow: 0 5px 10px 5px rgba(255, 255, 255, 0.089), 5px 0 10px 0 rgba(255, 255, 255, 0.041);
     display: block;
     position: relative;
     width: 100%;
