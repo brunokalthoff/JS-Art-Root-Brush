@@ -1,6 +1,9 @@
+//IMORTS
+
+
 //FIRST LOAD STRUCTURE
 const postcards = document.querySelector('.postcards');
-let imgNodes;
+let imgNodes, delNodes;
 
 const createElements = (arr) => {
     //remove all child elements from postcards container
@@ -11,9 +14,9 @@ const createElements = (arr) => {
         card.className = 'card';
         postcards.appendChild(card);
         //delete button
-        let rinow = new Date();
-        rinow = rinow.getTime();
-        if (rinow - x.time < 1800000) {
+        let riteNow = new Date();
+        riteNow = riteNow.getTime();
+        if (riteNow - x.time < 1800000) {
             const del = document.createElement('p');
             del.className = 'deleteCard';
             del.id = x._id;
@@ -80,7 +83,6 @@ const loadStuff = () => {
 loadStuff();
 
 //DELETE IMAGE
-
 const deleteCard = async (e) => {
     try {
         const response = await axios.delete('https://postcardsapi.herokuapp.com/api/v1/postcards/del/' + e.target.id);
@@ -90,17 +92,20 @@ const deleteCard = async (e) => {
     } catch (err) {
         console.error(err);
     }
-
 }
+
+export default deleteCard;
+
 
 setInterval(() => {
     let now = new Date();
     now = now.getTime();
     delNodes = document.querySelectorAll('.deleteCard');
-    for (const element of delNodes) {
-        if (now - element.dataset.time > 1800000) {
-            element.remove();
-            return;
+    if (delNodes != []) {
+        for (const element of delNodes) {
+            if (now - element.dataset.time > 1800000) {
+                element.remove();
+            }
         }
     }
 }, 60000)
