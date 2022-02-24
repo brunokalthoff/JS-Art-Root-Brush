@@ -38,7 +38,7 @@ header {
       antiquewhite,
       rgba(207, 207, 201, 0.637)
     );
-    box-shadow: 0 3px 10px 8px rgba(255, 255, 255, 0.089), 5px 0 5px 2px rgba(255, 255, 255, 0.041);
+    box-shadow: 0 5px 10px 10px rgba(255, 255, 255, 0.089), 5px 0 10px 0 rgba(255, 255, 255, 0.041);
     display: block;
     position: relative;
     width: 100%;
@@ -117,7 +117,7 @@ header {
     margin: 5rem 0;
     border-radius: 2rem;
     padding: 3rem 2% 5rem;
-    box-shadow: 0 10px 20px 20px rgba(255, 255, 255, 0.089), 10px 0 20px 0 rgba(255, 255, 255, 0.041);
+    box-shadow: 0 5px 10px 10px rgba(255, 255, 255, 0.089), 5px 0 10px 0 rgba(255, 255, 255, 0.041);
   }
   
   .card img {
