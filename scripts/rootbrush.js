@@ -2,12 +2,8 @@
 
 const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
-
 canvas.width = canvas.clientWidth;
 canvas.height = canvas.clientHeight;
-
-// canvas.width = window.innerWidth;
-// canvas.height = window.innerHeight;
 
 let drawing = false,
     bgColor = '34',
@@ -59,32 +55,16 @@ const popup = document.querySelector('.popup');
 const ex = document.querySelector('.ex');
 const back = document.querySelector('.back');
 const image = document.querySelector('#img');
-const loadImageBtn = document.querySelector('#loadImageBtn');
-const postcard1 = document.querySelector('#postcard1');
-const menu = document.querySelector('.menu');
 const taTitle = document.querySelector('.taTitle');
 const taText = document.querySelector('.taText');
 const taName = document.querySelector('.taName');
-const bg = document.querySelector('.bg');
 const download = document.querySelector('.download');
-
 
 const bgColorSlider = document.getElementById("bgColor");
 const rootColorSlider = document.getElementById("rootColor");
 const rootDensitySlider = document.getElementById("rootDensity");
 const rootSizeSlider = document.getElementById("rootSize");
 const rootAngleSlider = document.getElementById("rootAngle");
-
-
-const changePopupStyle = (ppp, cnv, mn, ks, b) => {
-    popup.style.display = ppp;
-    canvas.style.filter = cnv;
-    menu.style.display = mn;
-    ex.style.display = ks;
-    bg.style.backgroundColor = b;
-}
-
-
 
 bgColorSlider.oninput = function () {
     bgColor = this.value;
@@ -101,12 +81,10 @@ rootDensitySlider.oninput = function () {
 
 rootSizeSlider.oninput = function () {
     rootSize = this.value;
-    console.log(rootSize)
 }
 
 rootAngleSlider.oninput = function () {
     rootAngle = this.value;
-    console.log(rootAngle)
 }
 
 canvas.addEventListener('mousemove', (e) => {
@@ -120,12 +98,13 @@ canvas.addEventListener('mousemove', (e) => {
     }
 })
 
-window.addEventListener('mousedown', () => drawing = true)
+canvas.onmousedown = () =>drawing = true;
 
-window.addEventListener('mouseup', () => drawing = false)
+canvas.onmouseup = () => drawing = false;
 
 save.addEventListener('click', () => {
-    changePopupStyle('inline-block', 'brightness(0)', 'none', 'block', 'black');
+    popup.style.display = 'block';
+    ex.style.display = 'block';
     const dataURL = canvas.toDataURL();
     if (dataURL) image.setAttribute("src", dataURL);
     //download     .replace("image/png", "image/octet-stream");
@@ -139,16 +118,10 @@ clear.addEventListener('click', () => {
 })
 
 ex.addEventListener('click', () => {
-    changePopupStyle('none', 'opacity(1)', 'flex', 'none', 'var(--bg)')
+    popup.style.display = 'none';
+    ex.style.display = 'none';
 })
 
-// bg.addEventListener('click', () => {
-//     changePopupStyle('none', 'opacity(1)', 'flex', 'var(--bg)')
-// })
-
-// canvas.addEventListener('click', () => {
-//     changePopupStyle('none', 'opacity(1)', 'flex', 'var(--bg)')
-// })
 
 download.addEventListener('click', function(e) {
     const link = document.createElement('a');
@@ -176,7 +149,7 @@ const createData = async (img, title, text, name) => {
     }
 }
 
-function dataURLtoBlob(dataURL) {
+function dataURLtoBlobJPEG(dataURL) {
     let array, binary, i, len;
     binary = atob(dataURL.split(',')[1]);
     array = [];
@@ -189,8 +162,24 @@ function dataURLtoBlob(dataURL) {
     return new Blob([new Uint8Array(array)], {
         type: 'image/jpeg'
     });
-
 };
+
+function dataURLtoBlobPNG(dataURL) {
+    let array, binary, i, len;
+    binary = atob(dataURL.split(',')[1]);
+    array = [];
+    i = 0;
+    len = binary.length;
+    while (i < len) {
+        array.push(binary.charCodeAt(i));
+        i++;
+    }
+    return new Blob([new Uint8Array(array)], {
+        type: 'image/png'
+    });
+};
+
+
 
 const createForm = () => {
     const form = new FormData();
@@ -198,25 +187,34 @@ const createForm = () => {
     const title = taTitle.value;
     const text = taText.value;
     // base64 = canvas.toDataURL("image/png").split(';base64,')[1];
-    const file = dataURLtoBlob(canvas.toDataURL("image/jpeg", 0.7));
-    form.append('image', file);
+    const file = dataURLtoBlobJPEG(canvas.toDataURL("image/jpeg", 0.7));
+    const oFile = dataURLtoBlobPNG(canvas.toDataURL("image/png", 1));
+    form.append('images', file);
+    form.append('images', oFile);
     form.append("title", title);
     form.append("text", text);
     form.append("name", name);
 return form;
 }
 
-
-continu.addEventListener('click', async () => {
+const sendForm = async () => {
     const form = createForm();
     const reply = await axios.post('https://postcardsapi.herokuapp.com/api/v1/postcards/crt', form, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
     })
-    console.log(reply);
-    window.location.href = 'index.html';
-    
+    return reply;
+}
+
+
+continu.addEventListener('click', () => {
+    Object.assign(continu.style, {background:'url("images/loader.gif") no-repeat center center, hsl(120, 74%, 37%)',  backgroundSize: '9rem 3rem', fontSize: '0px', border: '2px solid hsl(120, 74%, 37%)' });
+    sendForm().then(res => {
+        console.log(res);
+        window.location.href = 'index.html';
+
+    }).catch(err => console.log(err));
 })
 
 reset.addEventListener('click', () => {

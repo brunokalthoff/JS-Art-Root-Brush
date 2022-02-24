@@ -178,6 +178,7 @@ body {
   color: antiquewhite;
   display: none;
   z-index: 20;
+  cursor: pointer;
 }
 
 .ex:after {
@@ -215,6 +216,7 @@ body {
   position: relative;
   overflow: hidden;
   width: 100%;
+  
 }
 
 #img {
@@ -230,12 +232,12 @@ body {
   display: none;
   opacity: .3;
   transition: all 300ms;
-  background: url('/images/download.png') no-repeat center center;
+  background: url('../images/download.png') no-repeat center center;
   background-size: 1.5rem 1.5rem;
   cursor: pointer;
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: 0.4rem;
+  border-radius: .5rem;
   border: 3px solid rgb(0, 0, 0);
 }
 
@@ -246,12 +248,11 @@ body {
 }
 
 .download:hover {
-  opacity: 1;
-  border: 3px solid rgb(0, 0, 0);
+  opacity: .9;
 }
 
 .imgContainer:hover #img {
-  /* filter: brightness(0.8); */
+  
   transition: all 300ms;
 }
 
@@ -279,12 +280,6 @@ body {
 
 .continue {
   width: 100%;
-}
-
-.continue:active {
-  background: url("/client/images/loader.gif") no-repeat center center;
-  background-size: 9rem 2.6rem;
-  font-size: 0px;
 }
 
 .taTitle {

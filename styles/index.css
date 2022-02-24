@@ -1,5 +1,5 @@
 body {
-    background-color: hsl(34, 2%, 12%);
+    background-color: hsl(60, 2%, 19%);
 }
 
 header {
@@ -26,8 +26,8 @@ header {
     text-decoration: none;
     padding: 2rem 1rem;
     background-image: linear-gradient(
-      hsla(44, 28%, 73%, 0.932),
-      rgba(185, 185, 162, 0.664)
+      hsla(40, 20%, 71%, 0.932),
+      rgba(207, 207, 201, 0.637)
     );
     box-shadow: 0 4px 8px 0 rgb(0, 0, 0), 0 6px 20px 0 rgb(0, 0, 0);
     display: block;
@@ -36,6 +36,7 @@ header {
     margin: 2rem auto;
     border-radius: 1rem;
     font-size: 5rem;
+    transition: all 200ms;
   }
   
   header p {
@@ -59,16 +60,17 @@ header {
   
   /* mouse over link */
   header a:hover {
-    color: rgb(36, 190, 36);
+    color: rgb(59, 163, 59);
     background-image: linear-gradient(
-      hsla(44, 28%, 73%, 0.966),
-      rgba(161, 160, 134, 0.904)
+      hsl(40, 20%, 71%),
+      rgba(207, 207, 201, 0.767)
     );
   }
   
   /* selected link */
   header a:active {
-    color: rgba(36, 190, 36, 0.61);
+    color: rgba(36, 190, 36, 0.74);
+    filter: brightness(.8)
   }
 
   .save {
@@ -94,9 +96,10 @@ header {
     position: relative;
     overflow: hidden;
     width: clamp(400px, 40vw, 450px);
-    background-image: linear-gradient(
-      hsla(44, 28%, 73%, 0.904),
-      rgba(161, 160, 134, 0.815)
+    background-color: #d8dbca;
+    background-image: url('../images/noise.png'), linear-gradient(
+      hsla(40, 20%, 71%, 0.932),
+      rgba(207, 207, 201, 0.637)
     );
     /* background-image: url('cb2.jpg'); */
     color: rgba(0, 0, 0, 0.788);
@@ -112,6 +115,7 @@ header {
     height: auto;
     object-fit: contain;
     border-radius: 0.8rem;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.192);
   }
   
   .card h1 {
