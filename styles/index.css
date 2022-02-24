@@ -1,5 +1,5 @@
 body {
-    background-color: hsl(60, 2%, 19%);
+    background-color: #121212
 }
 
 header {
@@ -26,10 +26,10 @@ header {
     text-decoration: none;
     padding: 2rem 1rem;
     background-image: linear-gradient(
-      hsla(40, 20%, 71%, 0.932),
+      antiquewhite,
       rgba(207, 207, 201, 0.637)
     );
-    box-shadow: 0 4px 8px 0 rgb(0, 0, 0), 0 6px 20px 0 rgb(0, 0, 0);
+    box-shadow: 0 10px 20px 20px rgb(0, 0, 0), 10px 0 20px 0 rgb(0, 0, 0);
     display: block;
     position: relative;
     width: 100%;
@@ -50,7 +50,8 @@ header {
   
   /* unvisited link */
   header a:link {
-    color: green;
+   
+    color: rgb(0, 102, 0);
   }
   
   /* visited link */
@@ -60,7 +61,7 @@ header {
   
   /* mouse over link */
   header a:hover {
-    color: rgb(59, 163, 59);
+    color: rgb(0, 158, 0);
     background-image: linear-gradient(
       hsl(40, 20%, 71%),
       rgba(207, 207, 201, 0.767)
@@ -107,7 +108,7 @@ header {
     margin: 5rem 0;
     border-radius: 2rem;
     padding: 3rem 2% 5rem;
-    box-shadow: 0 4px 8px 0 rgb(0, 0, 0), 0 6px 20px 0 rgb(0, 0, 0);
+    box-shadow: 0 10px 20px 20px rgb(0, 0, 0), 10px 0 20px 0 rgb(0, 0, 0);
   }
   
   .card img {
