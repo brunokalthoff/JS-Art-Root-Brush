@@ -2,6 +2,11 @@ body {
     background-color: #121212
 }
 
+h2 {
+  color: antiquewhite;
+  margin: 5rem 0;
+}
+
 header {
     position: relative;
     text-align: center;
