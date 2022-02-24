@@ -87,7 +87,18 @@ rootAngleSlider.oninput = function () {
     rootAngle = this.value;
 }
 
-canvas.addEventListener('mousemove', (e) => {
+// $(canvas).bind().addEventListener('mousemove', (e) => {
+//     if (drawing) {
+//         for (let i = 0; i < rootDensity; i++) {
+//             const fromTop = canvas.getBoundingClientRect().top;
+//             const fromLeft = canvas.getBoundingClientRect().left;
+//             const root = new Root(e.x - fromLeft, e.y - fromTop)
+//             root.update();
+//         }
+//     }
+// })
+
+const drawOnCanvas = e => {
     if (drawing) {
         for (let i = 0; i < rootDensity; i++) {
             const fromTop = canvas.getBoundingClientRect().top;
@@ -96,11 +107,20 @@ canvas.addEventListener('mousemove', (e) => {
             root.update();
         }
     }
-})
+}
 
-canvas.onmousedown = () =>drawing = true;
+['mousemove', 'touchmove'].forEach((x) => { 
+    canvas.addEventListener(x, (e)=>{
+        drawOnCanvas(e);
+    })
+    
+ })
 
+canvas.onmousedown = () => drawing = true;
+canvas.ontouchstart = () => drawing = true;
 canvas.onmouseup = () => drawing = false;
+canvas.ontouchend = () => drawing = false;
+
 
 save.addEventListener('click', () => {
     popup.style.display = 'block';
