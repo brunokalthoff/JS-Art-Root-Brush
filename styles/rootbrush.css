@@ -277,8 +277,17 @@ body {
 }
 
 .continue {
-  width: 100%;
+  width: 7rem;
   height: 3.5rem;
+  align-self: flex-end;
+}
+
+#continue-spanload {
+  height: 10px;
+  width: 10px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: none;
 }
 
 .taTitle {

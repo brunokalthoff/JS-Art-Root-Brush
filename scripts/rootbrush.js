@@ -10,7 +10,7 @@ let drawing = false,
     rootColor = '120',
     rootDensity = 10,
     rootAngle = 0,
-    rootSize = 0;   
+    rootSize = 0;
 
 const fillRec = () => { ctx.fillStyle = 'hsl(' + bgColor + ' , 78%, 91%)'; ctx.fillRect(0, 0, canvas.width, canvas.height); }
 fillRec();
@@ -87,17 +87,6 @@ rootAngleSlider.oninput = function () {
     rootAngle = this.value;
 }
 
-// $(canvas).bind().addEventListener('mousemove', (e) => {
-//     if (drawing) {
-//         for (let i = 0; i < rootDensity; i++) {
-//             const fromTop = canvas.getBoundingClientRect().top;
-//             const fromLeft = canvas.getBoundingClientRect().left;
-//             const root = new Root(e.x - fromLeft, e.y - fromTop)
-//             root.update();
-//         }
-//     }
-// })
-
 const drawOnCanvas = e => {
     if (drawing) {
         for (let i = 0; i < rootDensity; i++) {
@@ -109,12 +98,12 @@ const drawOnCanvas = e => {
     }
 }
 
-['mousemove', 'touchmove'].forEach((x) => { 
-    canvas.addEventListener(x, (e)=>{
+['mousemove', 'touchmove'].forEach((x) => {
+    canvas.addEventListener(x, (e) => {
         drawOnCanvas(e);
     })
-    
- })
+
+})
 
 canvas.onmousedown = () => drawing = true;
 canvas.ontouchstart = () => drawing = true;
@@ -127,9 +116,6 @@ save.addEventListener('click', () => {
     ex.style.display = 'block';
     const dataURL = canvas.toDataURL();
     if (dataURL) image.setAttribute("src", dataURL);
-    //download     .replace("image/png", "image/octet-stream");
-    // canvas.toDataURL("image/png");
-    // window.location.href = dataURL;
 })
 
 clear.addEventListener('click', () => {
@@ -143,13 +129,13 @@ ex.addEventListener('click', () => {
 })
 
 
-download.addEventListener('click', function(e) {
+download.addEventListener('click', function (e) {
     const link = document.createElement('a');
     link.download = 'canvas.png';
     link.href = canvas.toDataURL();
     link.click();
     link.delete;
-  });
+});
 
 
 const createData = async (img, title, text, name) => {
@@ -206,7 +192,6 @@ const createForm = () => {
     const name = taName.value;
     const title = taTitle.value;
     const text = taText.value;
-    // base64 = canvas.toDataURL("image/png").split(';base64,')[1];
     const file = dataURLtoBlobJPEG(canvas.toDataURL("image/jpeg", 0.7));
     const oFile = dataURLtoBlobPNG(canvas.toDataURL("image/png", 1));
     form.append('images', file);
@@ -214,22 +199,25 @@ const createForm = () => {
     form.append("title", title);
     form.append("text", text);
     form.append("name", name);
-return form;
+    return form;
 }
 
 const sendForm = async () => {
     const form = createForm();
     const reply = await axios.post('https://postcardsapi.herokuapp.com/api/v1/postcards/crt', form, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+            'Content-Type': 'multipart/form-data'
         }
     })
     return reply;
 }
 
-
 continu.addEventListener('click', () => {
-    Object.assign(continu.style, {background:'url("images/loader.gif") no-repeat center center, hsl(120, 74%, 37%)',  backgroundSize: '9rem 3rem', fontSize: '0px', border: '2px solid hsl(120, 74%, 37%)' });
+    const continuSpanText = document.querySelector('#continue-spantext');
+    Object.assign(continuSpanText.style, { display: 'none' });
+    const continuSpanLoad = document.querySelector('#continue-spanload');
+    Object.assign(continuSpanLoad.style, { display: 'inline-block' });
+    // continuSpan.classList.add("animate-ping");
     sendForm().then(res => {
         console.log(res);
         window.location.href = 'index.html';
@@ -240,20 +228,3 @@ continu.addEventListener('click', () => {
 reset.addEventListener('click', () => {
     window.location.reload();
 })
-
-
-//for file download
-
-// canvas.toBlob(
-    // const anchor = document.querySelector('.download');
-    //     blob => {
-    //         // console.log(blob);
-    //         // anchor.href = URL.createObjectURL(blob);
-    //         // const fileData = blob;
-
-    //         form.append("blob", blob);
-          
-    //     },
-    //     'image/jpeg',
-    //     0.9,
-    // );

@@ -2,6 +2,7 @@ body {
   background-image: url("../images/spacesvg.svg");
   font-family: "Roboto Mono", monospace;
   background-attachment: fixed;
+  background-repeat: repeat;
 }
 
 .content {
@@ -11,19 +12,6 @@ body {
   margin: 0 auto;
   border-radius: 2rem;
   border: 1px solid white;
-  /* max-height: 100vh;
-  overflow: scroll; */
-}
-
-Hide scrollbar for Chrome, Safari and Opera
-.content::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.content {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
 }
 
 h2 {
@@ -181,14 +169,11 @@ header a:active {
 .deleteCard {
   position: absolute;
   cursor: pointer;
-  width: 1rem;
-  height: 1rem;
   top: -0.5rem;
   right: 50%;
   transform: translate(50%);
   font-size: 3rem;
-  font-weight: lighter;
-  color: antiquewhite;
+  color: black;
   display: none;
   transition: all 1s ease-in 200ms;
 }
