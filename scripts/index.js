@@ -16,14 +16,14 @@ const createElements = (arr) => {
         //delete button
         let riteNow = new Date();
         riteNow = riteNow.getTime();
-        if (riteNow - x.time < 1800000) {
+        // if (riteNow - x.time < 1800000) {
             const del = document.createElement('p');
             del.className = 'deleteCard';
             del.id = x._id;
             del.dataset.time = x.time;
             del.onclick = deleteCard;
             card.appendChild(del);
-        }
+        
         //image element with placeholder image
         const img = document.createElement("img");
         img.src = './images/loading.gif';
@@ -48,7 +48,7 @@ const getInfos = async () => {
     const infos = await axios.get('https://postcardsapi.herokuapp.com/api/v1/postcards/ftch/nfs');
     return infos.data;
 }
-
+// https://postcardsapi.herokuapp.com/api/v1/postcards/ftch/nfs
 //ADD IMAGES
 
 
